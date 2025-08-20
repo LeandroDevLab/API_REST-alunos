@@ -91,3 +91,14 @@ Criar uma requisição, no caso o GET
 
 Configurando o Base
 <img src="./uploads/img/Manage_environments.png" alt="Texto Alternativo">
+
+## Configuração do Sequelize
+
+Ver alterações no commit referente a configuração do Sequelize
+
+- Instalado o sequelize-cli
+  `npm sequelize-cli --save-dev`
+- chamado o migration
+  `npx sequelize-cli migration:create --name=alunos`
+- Aplicando a migration
+  `npx sequelize-cli db:migrate`
