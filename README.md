@@ -63,3 +63,31 @@ Successfully created /home/leandro/Documentos/projects/API_REST/eslint.config.mj
 #### Instalando o express 4.21 compatível com as configurações do projeto
 
 `npm install express@4.21.0`
+
+## Dividindo as pastas da aplicação (Boas Práticas)
+
+## Criando o projeto no Insomnia
+
+### Criando um novo projeto
+
+Divisão
+<img src="./uploads/img/divisao_pastas_boas_praticas.png" alt="Texto Alternativo">
+
+Clicar no mais e criar o projeto
+
+<img src="./uploads/img/criando_projeto_localVault.png" alt="Texto Alternativo">
+
+### Criar uma nova coleção
+
+No caso a primeiro foi a Home
+<img src="./uploads/img/criando_projeto.png" alt="Texto Alternativo">
+
+### Criar um HTTP Request
+
+Criar uma requisição, no caso o GET
+<img src="./uploads/img/http_request.png" alt="Texto Alternativo">
+
+## Configurando o Base Environment
+
+Configurando o Base
+<img src="./uploads/img/Manage_environments.png" alt="Texto Alternativo">
