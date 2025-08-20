@@ -1,0 +1,45 @@
+{
+  "window.zoomLevel": 0,
+  "breadcrumbs.enabled": true,
+  "editor.fontSize": 16,
+  "debug.console.fontSize": 16,
+  "terminal.integrated.fontSize": 16,
+  "editor.glyphMargin": true,
+  "workbench.activityBar.location": "default",
+  "editor.lineNumbers": "on",
+  "explorer.compactFolders": false,
+  "workbench.tree.indent": 12,
+  "files.eol": "\n", // Final de linha sempre será LF
+
+  /* 🛠 Formatação e Lint */
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.formatOnSave": true,
+
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": "explicit",
+    "source.fixAll": "explicit"
+  },
+
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[typescript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[xml]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[svg]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[html]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    // ✨ ADICIONE ESTA LINHA PARA NÃO COMPLETAR O </body> ✨
+    "editor.formatOnSave": false
+  },
+
+  // Garante que arquivos .ejs sejam tratados como HTML para coloração
+  "files.associations": {
+    "*.ejs": "html"
+  }
+}
