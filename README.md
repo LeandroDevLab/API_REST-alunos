@@ -140,6 +140,13 @@ this.addHook('beforeSave', async user => {
 
 ```
 
+## CRUD de usuários
+
+- Create -> User.create(req.body);
+- Reade -> User.findAll() | User.findByPk(req.params.id);
+- Update -> User.update(req.body);
+- Delete -> User.destroy();
+
 ## Dicas finais e revisão
 
 ### Controler

@@ -52,7 +52,10 @@ export default class User extends Model {
 
     // "gancho" | INTERCEPTAÇÃO : entre um pedido e uma execução, beforeSave seria o caminho do passe, executar a ação descrita
     this.addHook('beforeSave', async user => {
-      user.password_hash = await bcrypt.hash(user.password, 8);
+      //IF de checagem para se recebeu o user.password fazer a chegagem!
+      if (user.password) {
+        user.password_hash = await bcrypt.hash(user.password, 8);
+      }
     });
     return this;
   }

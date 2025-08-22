@@ -10,6 +10,7 @@ export default defineConfig([
     languageOptions: { globals: globals.node },
     rules: {
       'class-methods-use-this': 'off',
+      'no-unused-vars': 'off',
     },
   },
 ]);
