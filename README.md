@@ -96,9 +96,64 @@ Configurando o Base
 
 Ver alterações no commit referente a configuração do Sequelize
 
-- Instalado o sequelize-cli
+- Instalado o sequelize-cli:
   `npm sequelize-cli --save-dev`
-- chamado o migration
+- Cria um arquivo de Migração de alunos:
   `npx sequelize-cli migration:create --name=alunos`
-- Aplicando a migration
+- Cria a tabela do banco de dados de acordo com as instruções pre-programadas no Migration:
   `npx sequelize-cli db:migrate`
+- Cria um arquivo de Migração de users:
+  `npx sequelize-cli migration:create --name=users`
+- Cria a tabela do banco de dados de acordo com as instruções pre-programadas no Migration:
+  `npx sequelize-cli db:migrate`
+- Se errou, precisar apagar e refazer, passos:
+
+  `npx sequelize-cli db:migrate:undo`
+
+  > - para desfazer a última
+
+  **ou**
+
+  `npx sequelize-cli db:migrate:undo --to 20250820184449-alunos.js`
+
+  > - para desfazer todas até a migração citada
+
+* faz edição:
+  `npx sequelize-cli db:migrate`
+
+## Instalando o Bcryptjs
+
+- `npm i bcryptjs`
+
+### Fazendo o addHook
+
+🏀 Explicando com Basquete:
+
+- Imagine um marcador de basquete que vai ser orientado pelo seu técnico para ficar atento entre o passe do armador e aquele pivô top. O marcador vai ficar atento no caminho interceptando todas as ações.
+
+"gancho" | INTERCEPTAÇÃO : entre um pedido e uma execução, beforeSave seria o caminho do passe, executar a ação descrita:
+
+```
+this.addHook('beforeSave', async user => {
+      user.password_hash = await bcrypt.hash(user.password, 8);
+    });
+
+```
+
+## Dicas finais e revisão
+
+### Controler
+
+Geralmente cada Controller vai ter aproximadamente 5 métodos.
+
+#### Padrão de mercado
+
+- index -> lista todos os usuários (GET)
+- store/create -> cria um novo usuário (POST)
+- delete -> apaga um usuário (DELETE)
+- show -> mostra um usuário (GET)
+- update -> atualiza um usuário (PATCH: só um valor | PUT: todos os campos)
+
+Se tiver mais do que isso, provavelmente está atribuindo mais ações que
+esse Controller precisa, talz seja melhor criar um novo Controller
+Específico para ação e local desejado!
