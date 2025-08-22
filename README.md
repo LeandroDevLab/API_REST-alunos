@@ -147,9 +147,13 @@ this.addHook('beforeSave', async user => {
 - Update -> User.update(req.body);
 - Delete -> User.destroy();
 
+## Instalando JsonWebToken
+
+`npm i jsonwebtoken`
+
 ## Dicas finais e revisão
 
-### Controler
+### Controller
 
 Geralmente cada Controller vai ter aproximadamente 5 métodos.
 
