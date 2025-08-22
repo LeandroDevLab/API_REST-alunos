@@ -1,10 +1,11 @@
 import jwt from 'jsonwebtoken';
+import User from '../models/User';
 
-export default (req, res, next) => {
+export default async (req, res, next) => {
   const { authorization } = req.headers;
 
   if (!authorization) {
-    res.status(401).json({
+    return res.status(401).json({
       errors: ['Login required'],
     });
   }
@@ -15,11 +16,33 @@ export default (req, res, next) => {
   try {
     const dados = jwt.verify(token, process.env.TOKEN_SECRET);
     const { id, email } = dados;
+
+    const user = await User.findOne({
+      where: {
+        id,
+        email,
+        is_active: true,
+      },
+    });
+
+    if (user.is_active === 'false') {
+      // Retorna aqui para sair da função
+      return res.status(400).json({
+        errors: ['Esse usuário foi desativado.'],
+      });
+    }
+
+    if (!user) {
+      return res.status(401).json({
+        errors: ['Usuário inválido!'],
+      });
+    }
+
     req.userId = id;
     req.userEmail = email;
     return next();
   } catch (e) {
-    res.status(401).json({
+    return res.status(401).json({
       errors: ['Token expirado ou inválido!'],
     });
   }

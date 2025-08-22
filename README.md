@@ -114,7 +114,7 @@ Ver alterações no commit referente a configuração do Sequelize
 
   **ou**
 
-  `npx sequelize-cli db:migrate:undo --to 20250820184449-alunos.js`
+  `npx sequelize-cli db:migrate:undo --to 20250822131258-users.js`
 
   > - para desfazer todas até a migração citada
 
@@ -180,3 +180,7 @@ Geralmente cada Controller vai ter aproximadamente 5 métodos.
 Se tiver mais do que isso, provavelmente está atribuindo mais ações que
 esse Controller precisa, talz seja melhor criar um novo Controller
 Específico para ação e local desejado!
+
+### Middleware
+
+❌❌❌A falta do return em um middleware é um erro muito comum e, como você viu, pode causar um comportamento imprevisível.❌❌❌

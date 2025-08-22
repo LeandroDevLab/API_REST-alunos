@@ -44,9 +44,15 @@ export default class User extends Model {
             },
           },
         },
+        // Adicionando o campo is_active
+        is_active: {
+          type: Sequelize.BOOLEAN,
+          defaultValue: true,
+        },
       },
       {
         sequelize,
+        tableName: 'users_novo',
       }
     );
 
