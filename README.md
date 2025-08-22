@@ -151,6 +151,18 @@ this.addHook('beforeSave', async user => {
 
 `npm i jsonwebtoken`
 
+- Usando
+
+```
+import jwt from 'jsonwebtoken';
+
+const { id } = user;
+    const token = jwt.sign({ id, email }, process.env.TOKEN_SECRET, {
+      expiresIn: process.env.TOKEN_EXPIRATION,
+    });
+    return res.json({ token });
+```
+
 ## Dicas finais e revisão
 
 ### Controller
