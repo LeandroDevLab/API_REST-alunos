@@ -238,6 +238,8 @@ this.addHook('beforeSave', async user => {
 
 `npm i multer`
 
+- Configura o multerConfig;
+
 ## Instalando JsonWebToken
 
 `npm i jsonwebtoken`

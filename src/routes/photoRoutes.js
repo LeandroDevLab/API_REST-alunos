@@ -3,9 +3,10 @@ import { Router } from 'express';
 
 //IMPORT LOCAIS
 import photoController from '../controllers/PhotoController';
+import loginRequired from '../middlewares/loginRequired';
 
 const router = new Router();
 
-router.post('/', photoController.store);
+router.post('/', loginRequired, photoController.store);
 
 export default router;
