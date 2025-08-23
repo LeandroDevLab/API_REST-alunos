@@ -7,7 +7,7 @@
 Wrote to .../projects/API_REST/package.json:
 
 ```bash
-{
+  {
   "name": "api_rest",
   "version": "1.0.0",
   "main": "index.js",
@@ -18,7 +18,6 @@ Wrote to .../projects/API_REST/package.json:
   "author": "",
   "license": "ISC",
   "description": ""
-}
 
 ```
 
@@ -121,6 +120,36 @@ Ver alterações no commit referente a configuração do Sequelize
 * faz edição:
   `npx sequelize-cli db:migrate`
 
+### Change Column
+
+- criando uma migration:
+
+`npx sequelize-cli migration:create --name=mudar-email-aluno-unique`
+
+> OBS: As funções up e down não retornam um valor para o Sequelize. Elas apenas executam operações no banco de dados. O Sequelize rastreia o estado da migração e sabe quando ela é concluída com base no sucesso ou falha das operações internas.
+
+```
+'use strict';
+
+/** @type {import('sequelize-cli').Migration} */
+module.exports = {
+  async up(queryInterface, Sequelize) {
+    // Método changeColumn
+    await queryInterface.changeColumn('alunos', 'email', {
+      type: Sequelize.STRING,
+      allowNull: false,
+      unique: true,
+    });
+  },
+
+  async down(queryInterface, Sequelize) {},
+};
+```
+
+- executando depois de editar informações da Migration recem criada:
+
+`npx sequelize-cli db:migrate `
+
 ### Seed
 
 Recurso para alimentar a base de dados de um vez só com várias informações ou até mesmo transformar uma planilha (de Excel, LibreOffice Calc, Google Sheets) em na formatação em TXT de deseja para implementar no seeds
@@ -156,6 +185,28 @@ Para popular o banco de dados com usuários de teste, você pode usar a seguinte
 - executar
 
 `npx sequelize-cli db:seed:all`
+
+## Principais comandos de queryInterface
+
+Os métodos mais utilizados do `queryInterface` são aqueles para criar, remover e modificar tabelas e colunas, que são as operações essenciais para gerenciar o esquema do banco de dados.
+
+Aqui está uma tabela em Markdown com os métodos mais comuns e suas explicações, pronta para você copiar e colar no seu `README.md` ou em qualquer outro lugar.
+
+---
+
+### Métodos Principais de `queryInterface`
+
+| Método             | Finalidade                                                   | Exemplo de Uso                                                               |
+| :----------------- | :----------------------------------------------------------- | :--------------------------------------------------------------------------- |
+| **`createTable`**  | Cria uma nova tabela no banco de dados.                      | `queryInterface.createTable('nome_da_tabela', { ... });`                     |
+| **`dropTable`**    | Remove uma tabela existente.                                 | `queryInterface.dropTable('nome_da_tabela');`                                |
+| **`addColumn`**    | Adiciona uma nova coluna a uma tabela.                       | `queryInterface.addColumn('nome_da_tabela', 'nome_da_coluna', { ... });`     |
+| **`removeColumn`** | Remove uma coluna de uma tabela.                             | `queryInterface.removeColumn('nome_da_tabela', 'nome_da_coluna');`           |
+| **`changeColumn`** | Modifica a definição de uma coluna (tipo, restrições, etc.). | `queryInterface.changeColumn('nome_da_tabela', 'nome_da_coluna', { ... });`  |
+| **`renameColumn`** | Renomeia uma coluna.                                         | `queryInterface.renameColumn('nome_da_tabela', 'nome_antigo', 'nome_novo');` |
+| **`addIndex`**     | Adiciona um índice a uma ou mais colunas.                    | `queryInterface.addIndex('nome_da_tabela', ['coluna_1', 'coluna_2']);`       |
+| **`bulkInsert`**   | Insere várias linhas de dados em uma tabela de uma só vez.   | `queryInterface.bulkInsert('nome_da_tabela', [{...}, {...}]);`               |
+| **`bulkDelete`**   | Deleta várias linhas de uma tabela de uma só vez.            | `queryInterface.bulkDelete('nome_da_tabela', null, {});`                     |
 
 ## Instalando o Bcryptjs
 

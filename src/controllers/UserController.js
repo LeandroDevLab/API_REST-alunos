@@ -21,6 +21,14 @@ class UserController {
       const users = await User.findAll({
         attributes: ['id', 'nome', 'email', 'is_active'],
       });
+
+      if (users.is_admin === 'false') {
+        // Retorna aqui para sair da função
+        return res.status(400).json({
+          errors: ['Acesso negado! Usuário é administrador!.'],
+        });
+      }
+
       //console.log('USER ID', req.userId);
       //console.log('USER EMAIL', req.userEmail);
       return res.json(users);
@@ -32,6 +40,14 @@ class UserController {
   async show(req, res) {
     try {
       const user = await User.findByPk(req.params.id);
+
+      if (user.is_admin === 'false') {
+        // Retorna aqui para sair da função
+        return res.status(400).json({
+          errors: ['Acesso negado! Usuário é administrador!.'],
+        });
+      }
+
       const { id, nome, email, is_active } = user;
       return res.json({ id, nome, email, is_active });
     } catch (e) {
@@ -105,10 +121,10 @@ class UserController {
     try {
       const user = await User.findByPk(req.params.id);
 
-      if (!user) {
+      if (user.is_admin === 'false') {
         // Retorna aqui para sair da função
         return res.status(400).json({
-          errors: ['Usuário não existe.'],
+          errors: ['Acesso negado! Usuário é administrador!.'],
         });
       }
 

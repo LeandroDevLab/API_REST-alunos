@@ -10,7 +10,6 @@ export default async (req, res, next) => {
     });
   }
 
-  // Bearer eyJdhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6OSwiZW1haWwiOiJqb2FvQGdtYWlsLmNvbSIsImlhdCI6MTc1NTg5MzQxOSwiZXhwIjoxNzU2NDk4MjE5fQ.WrlWx1DDY07aZHTfoVCwnwN9UPekoeA2vmZ3YkaiIQ8
   const [texto, token] = authorization.split(' ');
 
   try {
@@ -18,20 +17,20 @@ export default async (req, res, next) => {
     const { id, email } = dados;
 
     // Busca o usuário no banco de dados
-    // e já verifica se ele é uma conta ativa na mesma consulta.
+    // e já verifica se ele é um administrador na mesma consulta.
     const user = await User.findOne({
       where: {
         id,
         email,
-        is_active: true,
+        is_admin: true,
       },
     });
 
     if (!user) {
-      // Se a consulta não encontrou um usuário com 'is_active: true',
+      // Se a consulta não encontrou um usuário com 'is_admin: true',
       // o acesso é negado.
       return res.status(401).json({
-        errors: ['Usuário inválido!'],
+        errors: ['Acesso negado: Usuário não é um administrador.'],
       });
     }
 

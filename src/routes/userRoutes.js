@@ -1,16 +1,16 @@
 import { Router } from 'express';
 import userController from '../controllers/UserController';
 import loginRequired from '../middlewares/loginRequired';
+import adminRequired from '../middlewares/adminRequired';
 
 const router = new Router();
 
 //não deve existir para o usuário (só administradores)
 
-//❌❌❌ criar um middleware de segurança antes ❌❌❌
-router.get('/', userController.index); // Lista todos usuário
-//router.get('/:id', userController.show); // Lista um usuário
-//❌❌❌ lembrar de incrementar antes ❌❌❌
-//router.put('/admin/:id', userController.updateDoAdmin);
+//🏀 CRIADO um middleware de segurança 🏀
+router.get('/admin', adminRequired, userController.index); // Lista todos usuário
+router.get('/admin/:id', adminRequired, userController.show); // Lista um usuário
+router.put('/admin/:id', adminRequired, userController.updateDoAdmin);
 
 //São reais -> necessários
 router.post('/', userController.store);
