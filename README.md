@@ -234,6 +234,10 @@ this.addHook('beforeSave', async user => {
 - Update -> User.update(req.body);
 - Delete -> User.destroy();
 
+## Instalando pacote para gerenciar upload de arquivos
+
+`npm i multer`
+
 ## Instalando JsonWebToken
 
 `npm i jsonwebtoken`

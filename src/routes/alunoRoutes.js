@@ -1,6 +1,8 @@
+//IMPORT DE MODULOS
 import { Router } from 'express';
-import alunoController from '../controllers/AlunoController';
 
+//IMPORT LOCAIS
+import alunoController from '../controllers/AlunoController';
 import loginRequired from '../middlewares/loginRequired';
 
 const router = new Router();

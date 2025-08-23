@@ -1,4 +1,7 @@
+//IMPORT DE MODULOS
 import { Router } from 'express';
+
+//IMPORT LOCAIS
 import userController from '../controllers/UserController';
 import loginRequired from '../middlewares/loginRequired';
 import adminRequired from '../middlewares/adminRequired';

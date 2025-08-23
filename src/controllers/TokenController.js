@@ -1,4 +1,7 @@
+//IMPORT DE MODULOS
 import jwt from 'jsonwebtoken';
+
+//IMPORT LOCAIS
 import User from '../models/User';
 
 class TokenController {
