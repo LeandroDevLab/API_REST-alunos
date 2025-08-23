@@ -7,7 +7,7 @@ const router = new Router();
 //não deve existir para o usuário (só administradores)
 
 //❌❌❌ criar um middleware de segurança antes ❌❌❌
-//router.get('/', userController.index); // Lista todos usuário
+router.get('/', userController.index); // Lista todos usuário
 //router.get('/:id', userController.show); // Lista um usuário
 //❌❌❌ lembrar de incrementar antes ❌❌❌
 //router.put('/admin/:id', userController.updateDoAdmin);

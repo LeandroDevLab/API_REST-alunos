@@ -121,6 +121,42 @@ Ver alterações no commit referente a configuração do Sequelize
 * faz edição:
   `npx sequelize-cli db:migrate`
 
+### Seed
+
+Recurso para alimentar a base de dados de um vez só com várias informações ou até mesmo transformar uma planilha (de Excel, LibreOffice Calc, Google Sheets) em na formatação em TXT de deseja para implementar no seeds
+
+Você tem um bom plano. O formato mais comum para incluir tabelas em um `README.md` é usando a sintaxe de tabelas do Markdown. E para o fluxo de trabalho de exportar e converter, a explicação em texto é a melhor opção.
+
+Aqui está o código completo que você pode adicionar ao seu `README.md`. Ele inclui a tabela formatada e a descrição do processo para conversão de dados do LibreOffice Calc para um seed de dados.
+
+---
+
+#### Exemplo de Dados para Seeds
+
+Para popular o banco de dados com usuários de teste, você pode usar a seguinte tabela.
+
+| nome      | email              | password | is_active |
+| :-------- | :----------------- | :------- | :-------- |
+| John1 Doe | johndoe1@gmail.com | 123456   | TRUE      |
+| John2 Doe | johndoe2@gmail.com | 123456   | TRUE      |
+| John3 Doe | johndoe3@gmail.com | 123456   | TRUE      |
+
+#### Como Exportar e Converter para Seeds
+
+1.  **Exporte a tabela para CSV:** No LibreOffice Calc, vá em **Arquivo > Salvar como...** e selecione o tipo de arquivo **"Texto CSV (.csv)"**.
+2.  **Converta para JSON:** Use um conversor online, como o [csvjson.com](https://www.csvjson.com/csv2json), para converter o conteúdo do arquivo CSV para um formato JSON.
+3.  **Ajuste o código:** No seu arquivo de seed, copie o JSON gerado e adicione a lógica de `await bcrypt.hash()` para cada senha.
+
+#### Comandos de criação e execução do SEED
+
+- criar
+
+`npx sequelize-cli seed:generate --name criar-usuario`
+
+- executar
+
+`npx sequelize-cli db:seed:all`
+
 ## Instalando o Bcryptjs
 
 - `npm i bcryptjs`
